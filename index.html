@@ -10,7 +10,21 @@
         <meta http-equiv="refresh" content="0; url=disabled.html">
     </noscript>
 
-
+    <script>
+		var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+			if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+			function mischandler(){
+		return false;
+			}
+		function mousehandler(e){
+			var myevent = (isNS) ? e : event;
+			var eventbutton = (isNS) ? myevent.which : myevent.button;
+				if((eventbutton==2)||(eventbutton==3)) return false;
+			}
+				document.oncontextmenu = mischandler;
+				document.onmousedown = mousehandler;
+				document.onmouseup = mousehandler;
+	</script>
 
     <meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="lp-version" content="v6.23.14"><style title="page-styles" type="text/css" data-page-type="main_desktop">
 body {
